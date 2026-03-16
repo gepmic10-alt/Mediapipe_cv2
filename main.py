@@ -15,18 +15,18 @@ hands = mp_hands.Hands(
     min_tracking_confidence=0.6
 )
 
-# ----- PyAutoGUI -----
+#  PyAutoGUI
 screen_w, screen_h = pyautogui.size()
 cursor_x, cursor_y = screen_w // 2, screen_h // 2
 last_click = 0
 pyautogui.FAILSAFE = False
 
-# ----- Настройки мертвої зони -----
+# Настройки мертвої зони
 DEAD_ZONE_RADIUS = 40  # пікселів на фронтальній камері
 SPEED_FACTOR = 0.3  # множник для повільного руху
 
 
-# ----- Допоміжні функції -----
+# Допоміжні функції
 def distance(p1, p2, w, h):
     x1, y1 = int(p1.x * w), int(p1.y * h)
     x2, y2 = int(p2.x * w), int(p2.y * h)
@@ -99,7 +99,7 @@ def process_side(frame):
     return frame, lkm, pkm
 
 
-# ----- Відкриття камер -----
+# Відкриття камер
 cap_front = cv2.VideoCapture(0, cv2.CAP_MSMF)
 cap_side = cv2.VideoCapture(1, cv2.CAP_MSMF)
 if not cap_front.isOpened():
